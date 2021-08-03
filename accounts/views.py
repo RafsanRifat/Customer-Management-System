@@ -5,7 +5,10 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    return render(request, 'accounts/dashboard.html')
+    customers = Customer.objects.all()
+    orders = Orders.objects.all()
+    context = {'customers' : customers, 'orders' : orders}
+    return render(request, 'accounts/dashboard.html', context)
 
 def customer(request):
     return render(request, 'accounts/customer.html')

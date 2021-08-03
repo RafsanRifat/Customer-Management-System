@@ -2,6 +2,9 @@ from django.db import models
 
 # Create your models here.
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200, null=True)
+
 class Customer(models.Model):
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=50, null=True)
@@ -17,6 +20,7 @@ class Product(models.Model):
         ('Indoor', 'Indoor'),
         ('Out Door', 'Out Door')
     )
+    tag = models.ManyToManyField(Tag, null=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200, null=True)
     price = models.FloatField(max_length=200, null=True)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)
@@ -33,8 +37,8 @@ class Orders(models.Model):
         ('Out For Delivery', 'Out For Delivery'),
         ('Delivered', 'Delivered')
     )
-    #customer
-    #order
+    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+    Product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
 

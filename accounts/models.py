@@ -20,7 +20,7 @@ class Product(models.Model):
         ('Indoor', 'Indoor'),
         ('Out Door', 'Out Door')
     )
-    tag = models.ManyToManyField(Tag, null=True, on_delete=models.SET_NULL)
+    tag = models.ManyToManyField(Tag)
     name = models.CharField(max_length=200, null=True)
     price = models.FloatField(max_length=200, null=True)
     category = models.CharField(max_length=200, null=True, choices=CATEGORY)

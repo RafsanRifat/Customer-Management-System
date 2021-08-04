@@ -60,11 +60,11 @@
                     {% for order in orders %}
                         <tr>
                         <td>{{ order.product }}</td>
-                        <td>{{ order.ca }}</td>
-                        <td>{{ order.product }}</td>
-                        <td>{{ order.product }}</td>
-                        <td>{{ order.product }}</td>
-                        <td>{{ order.product }}</td>
+                        <td>{{ order.product.category }}</td>
+                        <td>{{ order.date_created }}</td>
+                        <td>{{ order.status }}</td>
+                        <td><a href="" class="btn btn-sm btn-info">Update</a></td>
+                        <td><a href="" class="btn btn-sm btn-danger">Delete</a></td>
                         </tr>
                     {% endfor %}
                 </table>

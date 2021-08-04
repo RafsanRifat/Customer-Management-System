@@ -7,7 +7,10 @@ from .models import *
 def home(request):
     customers = Customer.objects.all()
     orders = Orders.objects.all()
-    context = {'customers' : customers, 'orders' : orders}
+    total_orders = orders.count()
+    delivered = orders.filter(status='Delivered').count()
+    pending = orders.filter(status='pending').count()
+    context = {'customers' : customers, 'orders' : orders, 'total_orders' : total_orders, 'delivered' : delivered, 'pending' : pending}
     return render(request, 'accounts/dashboard.html', context)
 
 def customer(request):

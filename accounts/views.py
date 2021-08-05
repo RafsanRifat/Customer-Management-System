@@ -25,3 +25,7 @@ def products(request):
     products = Product.objects.all()
     context = {'products' : products}
     return render(request, 'accounts/products.html', context)
+
+def createOrder(request):
+    context = {}
+    return render(request, 'accounts/order_form.html', context)

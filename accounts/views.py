@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from .forms import OrdersForm
 
 # Create your views here.
 
@@ -27,5 +28,6 @@ def products(request):
     return render(request, 'accounts/products.html', context)
 
 def createOrder(request):
-    context = {}
+    form = OrdersForm
+    context = {'form' : form}
     return render(request, 'accounts/order_form.html', context)

@@ -38,6 +38,8 @@ def createOrder(request):
     return render(request, 'accounts/order_form.html', context)
 
 def updateOrder(request, pk):
-    form = OrdersForm()
+
+    orders = Orders.objects.get(id=pk)
+    form = OrdersForm(instance=orders)
     context = {'form': form}
     return render(request, 'accounts/order_form.html', context)

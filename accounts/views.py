@@ -64,3 +64,5 @@ def deleteOrders(request, pk_test2):
         return redirect('/')
     context = {'item': orders2}
     return render(request, 'accounts/delete.html', context)
+
+

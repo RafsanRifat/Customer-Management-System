@@ -41,5 +41,12 @@ def updateOrder(request, pk):
 
     orders = Orders.objects.get(id=pk)
     form = OrdersForm(instance=orders)
+
+    if request.method == 'POST':
+        form = OrdersForm(request.POST, instance=orders)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
     context = {'form': form}
     return render(request, 'accounts/order_form.html', context)

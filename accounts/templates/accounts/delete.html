@@ -3,10 +3,10 @@
 
 {% block content %}
 
-    <p>Are you sure you want to delete </p>
+    <p>Are you sure you want to delete "{{ item }}" ? </p>
 
-    <form action="{% url 'home' %}" method="POST">
-        <a href="{% url 'home' %}">Cancel</a>
+    <form action="" method="POST">
+        <a href="{% url 'dashboard' %}">Cancel</a>
         <input type="submit" value="Confirm">
     </form>
 

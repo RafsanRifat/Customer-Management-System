@@ -9,7 +9,7 @@ def home(request):
     total_orders = orders.count()
     delivered = orders.filter(status='Delivered').count()
     pending = orders.filter(status='pending').count()
-    context = {'customers' : customers, 'orders' : orders, 'total_orders' : total_orders, 'delivered' : delivered, 'pending' : pending}
+    context = {'customers': customers, 'orders': orders, 'total_orders': total_orders, 'delivered': delivered, 'pending': pending}
     return render(request, 'accounts/dashboard.html', context)
 
 
@@ -17,13 +17,13 @@ def customer(request, pk_test):
     customer = Customer.objects.get(id=pk_test)
     orders = customer.orders_set.all()
     order_count = orders.count()
-    context = {'customer' : customer, 'orders' : orders, 'order_count' : order_count}
+    context = {'customer': customer, 'orders': orders, 'order_count': order_count}
     return render(request, 'accounts/customer.html', context)
 
 
 def products(request):
     products = Product.objects.all()
-    context = {'products' : products}
+    context = {'products': products}
     return render(request, 'accounts/products.html', context)
 
 
@@ -34,5 +34,10 @@ def createOrder(request):
         if form.is_valid():
             form.save()
             return redirect('/')
-    context = {'form' : form}
+    context = {'form': form}
+    return render(request, 'accounts/order_form.html', context)
+
+def updateOrder(request, pk):
+    form = OrdersForm()
+    context = {'form': form}
     return render(request, 'accounts/order_form.html', context)

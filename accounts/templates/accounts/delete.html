@@ -1,0 +1,14 @@
+{% extends 'accounts/main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <p>Are you sure you want to delete </p>
+
+    <form action="{% url 'home' %}" method="POST">
+        <a href="{% url 'home' %}">Cancel</a>
+        <input type="submit" value="Confirm">
+    </form>
+
+
+{% endblock %}

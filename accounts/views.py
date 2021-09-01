@@ -52,10 +52,12 @@ def updateOrder(request, pk):
     return render(request, 'accounts/order_form.html', context)
 
 
+# def deleteOrders(request, pk):
+#     orders = Orders.objects.get(id=pk)
+#     context = {'item': orders}
+#     return render(request, 'accounts/delete.html', context)
+
 def deleteOrders(request, pk):
     orders = Orders.objects.get(id=pk)
     context = {'item': orders}
     return render(request, 'accounts/delete.html', context)
-
-# def rafsan(request):
-#     return render(request, 'accounts/delete.html')

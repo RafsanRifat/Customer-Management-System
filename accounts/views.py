@@ -57,7 +57,10 @@ def updateOrder(request, pk):
 #     context = {'item': orders}
 #     return render(request, 'accounts/delete.html', context)
 
-def deleteOrders(request, pk):
-    orders = Orders.objects.get(id=pk)
-    context = {'item': orders}
+def deleteOrders(request, pk_test2):
+    orders2 = Customer.objects.get(id=pk_test2)
+    if request.method == 'POST':
+        orders2.delete()
+        return redirect('/')
+    context = {'item': orders2}
     return render(request, 'accounts/delete.html', context)
